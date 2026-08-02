@@ -11,7 +11,7 @@ def test_top_n():
 
     result = top_n(records , "ip" , 2)
     assert len(result) == 2
-    assert result[0] == {"A" , 3}
+    assert result[0] == ("A" , 3)
 
 def test_filter_5xx():
     records = [
@@ -34,5 +34,5 @@ def test_top_5xx_endpoints():
         {"path": "/api/a", "status" : 500},
     ]
     result = top_5xx_endpoints(records , 2)
-    assert result[0] == {"/api/a" : 4}
-    assert result[0] == {"/api/b" : 1}
+    assert result[0] == ("/api/a" , 4)
+    assert result[1] == ("/api/b" , 1)
