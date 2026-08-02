@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubantu-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
@@ -21,4 +21,4 @@ jobs:
       run: pip install pytest
 
     - name: Run Tests
-      run: python -m pytest tsets/ -v
+      run: python -m pytest tests/ -v
