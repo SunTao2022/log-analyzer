@@ -1,28 +1,25 @@
 import argparse
-from src.parser import parse_file
-from src.report import generate_report
+from src_1.parser import parser_file
+from src_1.report import generate_report
 
 def main():
-    parser = argparse.ArgumentParser(description="Nhinx analysis tool")
-    parser.add_argument("log_file" , help="log_file path")
-    parser.add_argument("--top-ips" , type=int , default=5 , help="show top x , default=5")
-    parser.add_argument("--output" , help="exporting report")
+    parser = argparse.ArgumentParser(description="Nginx log analysis tool")
+    parser.add_argument("logfile" , help="path of log_file")
+    parser.add_argument("--top-ips" , type=int , default=5 , help="show fitst N ips")
+    parser.add_argument("--output" , help="file was exporting to ")
 
     args = parser.parse_args()
 
-
-    records = parse_file(args.log_file)
+    records = parser_file(args.logfile)
     report = generate_report(records)
 
-
     if args.output:
-        with open(args.output , "w" , encoding="utf-8") as f:
+        with open(args.output , "w" ,encoding="utf-8") as f:
             f.write(report)
-        print(f"report saved at : {args.output}")
+        print(f"report was save as {args.output}")
     else:
         print(report)
 
 
 if __name__ == "__main__":
     main()
-    
