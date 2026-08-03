@@ -1,11 +1,11 @@
-name: Run Tests
+name: Run_test
 
-on:
-  push:
-    branches: [ master ]
+on: 
+  push: 
+   branches: [ master ]
 
-jobs:
-  test:
+jobs: 
+  test: 
     runs-on: ubuntu-latest
 
     steps:
@@ -14,11 +14,11 @@ jobs:
 
     - name: Setup Python
       uses: actions/setup-python@v5
-      with:
+      with: 
         python-version: '3.11'
 
-    - name: install pytest
+    - name: Install dependencies
       run: pip install pytest
 
-    - name: Run Tests
+    - name: Run test
       run: python -m pytest tests/ -v
